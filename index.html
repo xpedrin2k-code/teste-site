@@ -184,9 +184,26 @@ function resetAll() {
 }
 
 // Contador ilustrativo com valor diário
-const today = new Date();
-const seed = Number(today.getFullYear() + "" + (today.getMonth() + 1) + "" + today.getDate());
-document.getElementById("count").textContent = (20000 + (seed * 17 % 50001)).toLocaleString("pt-BR");
-</script>
-</body>
-</html>
+const countElement = document.getElementById("count");
+
+const dataAtual = new Date();
+const dia = dataAtual.getDate();
+const mes = dataAtual.getMonth();
+const ano = dataAtual.getFullYear();
+
+const seed = (dia * 31 + mes * 17 + ano * 13) % 100;
+
+const limite = 5000 + (seed * 347 % 15001);
+
+const inicioDia = new Date();
+inicioDia.setHours(0, 0, 0, 0);
+
+const segundosPassados = Math.floor(
+  (Date.now() - inicioDia.getTime()) / 1000
+);
+
+const progresso = segundosPassados / 86400;
+
+const numero = Math.floor(limite * progresso);
+
+countElement.textContent = numero.toLocaleString("pt-BR");
