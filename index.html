@@ -39,8 +39,6 @@ input.username { width: 100%; border: 0; outline: 0; font-size: 16px; }
 .post small { display: block; color: #aebbd0; margin-top: 7px; }
 .postfoot { padding: 12px; font-size: 13px; }
 .footer { text-align: center; color: #1680f5; font-size: 12px; margin-top: 14px; }
-.counter { margin-top: 7px; color: #52617a; }
-.counter strong { color: #1676e6; }
 </style>
 </head>
 <body>
@@ -112,7 +110,6 @@ input.username { width: 100%; border: 0; outline: 0; font-size: 16px; }
 
     <div class="footer" id="footer">
         Política de Privacidade · Termos de Uso
-        <div class="counter">Consultas hoje: <strong id="count">—</strong></div>
     </div>
 </div>
 </main>
@@ -182,11 +179,3 @@ function resetAll() {
     document.getElementById("username").value = "";
     go(1);
 }
-
-// Contador ilustrativo com valor diário
-const today = new Date();
-const seed = Number(today.getFullYear() + "" + (today.getMonth() + 1) + "" + today.getDate());
-document.getElementById("count").textContent = (20000 + (seed * 17 % 50001)).toLocaleString("pt-BR");
-</script>
-</body>
-</html>
