@@ -149,7 +149,7 @@ function confirmUser(event) {
     go(3);
 }
 
-// Animação de demonstração
+// Animação
 function runDemo() {
     go(4);
     const messages = [
@@ -183,10 +183,84 @@ function resetAll() {
     go(1);
 }
 
-// Contador ilustrativo com valor diário
-const today = new Date();
-const seed = Number(today.getFullYear() + "" + (today.getMonth() + 1) + "" + today.getDate());
-document.getElementById("count").textContent = (20000 + (seed * 17 % 50001)).toLocaleString("pt-BR");
-</script>
-</body>
-</html>
+// CONTADOR DIÁRIO
+(() => {
+    const contador = document.getElementById("count");
+
+    // Limites definidos manualmente para datas específicas
+    const limitesDiarios = {
+        "2026-11-22": 30000,
+        "2026-11-23": 20381,
+        "2026-11-24": 19583
+    };
+
+    // Faixa para gerar limites dos próximos dias
+    const limiteMinimo = 15000;
+    const limiteMaximo = 35000;
+
+    // Formata a data local
+    function obterDataKey(data) {
+        const ano = data.getFullYear();
+        const mes = String(data.getMonth() + 1).padStart(2, "0");
+        const dia = String(data.getDate()).padStart(2, "0");
+
+        return `${ano}-${mes}-${dia}`;
+    }
+
+    // Gera um limite aleatório estável por data
+    // (não muda quando a página é atualizada)
+    function gerarLimite(dataKey) {
+        let hash = 0;
+
+        for (let i = 0; i < dataKey.length; i++) {
+            hash = ((hash << 5) - hash + dataKey.charCodeAt(i)) | 0;
+        }
+
+        hash = Math.abs(hash);
+
+        return limiteMinimo + (hash % (limiteMaximo - limiteMinimo + 1));
+    }
+
+    // Obtém o limite do dia
+    function obterLimite(dataKey) {
+        if (limitesDiarios[dataKey] !== undefined) {
+            return limitesDiarios[dataKey];
+        }
+
+        return gerarLimite(dataKey);
+    }
+
+    // Atualiza o contador
+    function atualizarContador() {
+        const agora = new Date();
+
+        const dataKey = obterDataKey(agora);
+        const limite = obterLimite(dataKey);
+
+        // Segundos decorridos desde meia-noite
+        const segundosDecorridos =
+            agora.getHours() * 3600 +
+            agora.getMinutes() * 60 +
+            agora.getSeconds();
+
+        // Total de segundos do dia
+        const segundosNoDia = 86400;
+
+        // Progresso proporcional ao tempo
+        const progresso = segundosDecorridos / segundosNoDia;
+
+        // Calcula o valor atual
+        const valor = Math.min(
+            limite,
+            Math.floor(limite * progresso)
+        );
+
+        contador.textContent = valor.toLocaleString("pt-BR");
+    }
+
+    // Atualiza imediatamente
+    atualizarContador();
+
+    // Atualiza a cada segundo
+    setInterval(atualizarContador, 1000);
+})();
