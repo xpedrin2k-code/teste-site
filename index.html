@@ -182,15 +182,3 @@ function resetAll() {
     document.getElementById("username").value = "";
     go(1);
 }
-
-// Contador ilustrativo com valor diário
-<p>Contador de demonstração: <span id="count">0</span></p>
-<script>
-let numero = 0;
-
-setInterval(() => {
-  numero += Math.floor(Math.random() * 3) + 1;
-  document.getElementById("count").textContent =
-    numero.toLocaleString("pt-BR");
-}, 25000);
-</script>
