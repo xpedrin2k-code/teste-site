@@ -259,6 +259,7 @@ for (let i = 0; i < 70; i++) {
 
 // Troca entre etapas
 function go(n) {
+        document.body.classList.toggle("demo-screen", n === 5);
     for (let i = 1; i <= 5; i++) {
         document.getElementById("s" + i).classList.add("hidden");
     }
