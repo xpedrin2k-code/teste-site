@@ -277,6 +277,7 @@ function go(n) {
 function confirmUser(event) {
     event.preventDefault();
     const username = document.getElementById("username").value.trim().replace(/^@/, "");
+    document.querySelector("#demoAccount strong").textContent = "@" + username;
     document.getElementById("uname").textContent = "@" + username;
     document.getElementById("confirmUser").textContent = "@" + username;
     go(3);
