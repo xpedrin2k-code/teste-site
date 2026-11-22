@@ -182,3 +182,11 @@ function resetAll() {
     document.getElementById("username").value = "";
     go(1);
 }
+
+// Contador ilustrativo com valor diário
+const today = new Date();
+const seed = Number(today.getFullYear() + "" + (today.getMonth() + 1) + "" + today.getDate());
+document.getElementById("count").textContent = (20000 + (seed * 17 % 50001)).toLocaleString("pt-BR");
+</script>
+</body>
+</html>
