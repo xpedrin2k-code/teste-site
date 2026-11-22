@@ -5,6 +5,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ghostly</title>
 <style>
+.demo-account {
+    width: 100%;
+    box-sizing: border-box;
+    background: #fff;
+    border: 1px solid #dbdbdb;
+    border-radius: 6px;
+    padding: 12px;
+    font-family: Arial, sans-serif;
+    color: #262626;
+}
+
+.demo-account span {
+    display: block;
+    font-size: 11px;
+    color: #777;
+    margin-bottom: 5px;
+}
+
+.demo-account strong {
+    font-size: 14px;
+    font-weight: 400;
+}
 @import url('https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap');
 * { box-sizing: border-box; }
 body { margin: 0; background: #160824; color: #121b2d; font: 16px Arial, sans-serif; min-height: 100vh; }
@@ -206,7 +228,10 @@ body.demo-screen main > div {
 
     <div class="demo-logo">Instagram</div>
 
- <div class="demo-field demo-account" id="demoAccount">
+<div class="demo-account" id="demoAccount">
+    <span>Usuário da demonstração</span>
+    <strong></strong>
+</div>
     Conta selecionada: <strong></strong>
 </div>
 
