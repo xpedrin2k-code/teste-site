@@ -206,9 +206,12 @@ body.demo-screen main > div {
 
     <div class="demo-logo">Instagram</div>
 
-<div class="demo-field demo-account" id="demoAccount">
-    Conta selecionada: <strong></strong>
-</div>
+<input
+    class="demo-field demo-account"
+    id="demoAccount"
+    type="text"
+    readonly
+>
 
 <div class="demo-field"></div>
 
@@ -277,7 +280,7 @@ function go(n) {
 function confirmUser(event) {
     event.preventDefault();
     const username = document.getElementById("username").value.trim().replace(/^@/, "");
-    document.querySelector("#demoAccount strong").textContent = "@" + username;
+    document.getElementById("demoAccount").value = username;
     document.getElementById("uname").textContent = "@" + username;
     document.getElementById("confirmUser").textContent = "@" + username;
     go(3);
