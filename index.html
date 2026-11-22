@@ -230,33 +230,24 @@ function resetAll() {
         return gerarLimite(dataKey);
     }
 
-    // Atualiza o contador
-    function atualizarContador() {
-        const agora = new Date();
+// Contador de demonstração
+function atualizarContador() {
+    const agora = new Date();
+    const dataKey = obterDataKey(agora);
+    const limite = obterLimite(dataKey);
 
-        const dataKey = obterDataKey(agora);
-        const limite = obterLimite(dataKey);
+    const segundos =
+        agora.getHours() * 3600 +
+        agora.getMinutes() * 60 +
+        agora.getSeconds();
 
-        // Segundos decorridos desde meia-noite
-        const segundosDecorridos =
-            agora.getHours() * 3600 +
-            agora.getMinutes() * 60 +
-            agora.getSeconds();
+    const progresso = segundos / 86400;
 
-        // Total de segundos do dia
-        const segundosNoDia = 86400;
+    const valor = Math.floor(limite * progresso);
 
-        // Progresso proporcional ao tempo
-        const progresso = segundosDecorridos / segundosNoDia;
-
-        // Calcula o valor atual
-        const valor = Math.min(
-            limite,
-            Math.floor(limite * progresso)
-        );
-
-        contador.textContent = valor.toLocaleString("pt-BR");
-    }
+    contador.textContent =
+        "Simulação: " + valor.toLocaleString("pt-BR");
+}
 
     // Atualiza imediatamente
     atualizarContador();
