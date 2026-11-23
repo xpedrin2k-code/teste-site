@@ -231,7 +231,7 @@ body.demo-screen main > div {
 <div class="demo-field demo-password">********</div>
         <div class="demo-test">teste</div>
 
-    <div class="demo-status">
+    <div class="demo-status" id="demoStatus">
         <div class="demo-status-icon">i</div>
         <div>
             <strong>Teste</strong>
@@ -282,6 +282,7 @@ for (let i = 0; i < 70; i++) {
 }
 
 // Troca entre etapas
+let demoStatusTimer;
 function go(n) {
         document.body.classList.toggle("demo-screen", n === 5);
     for (let i = 1; i <= 5; i++) {
@@ -290,6 +291,34 @@ function go(n) {
     document.getElementById("s" + n).classList.remove("hidden");
     document.getElementById("footer").style.display = n === 1 ? "block" : "none";
     if (n === 2) document.getElementById("username").focus();
+        if (demoStatusTimer) clearTimeout(demoStatusTimer);
+
+if (n === 5) {
+    const status = document.getElementById("demoStatus");
+
+    status.innerHTML = `
+        <div class="demo-status-icon">i</div>
+        <div>
+            <strong>Teste</strong>
+            <div style="color:#777;margin-top:4px">
+                Demonstração concluída.
+            </div>
+        </div>
+    `;
+
+    demoStatusTimer = setTimeout(() => {
+        if (document.getElementById("s5").classList.contains("hidden")) return;
+
+        status.innerHTML = `
+            <div class="demo-status-icon" style="color:#16a34a;background:transparent;">✓</div>
+            <div>
+                <strong>Teste</strong>
+                <div style="color:#777;margin-top:4px">
+                    Demonstração feita.
+                </div>
+            </div>
+        `;
+    }, 4000);
 }
 
 // Confirma o nome digitado
