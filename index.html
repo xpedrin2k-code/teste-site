@@ -282,47 +282,58 @@ for (let i = 0; i < 70; i++) {
 }
 
 // Troca entre etapas
+
 let demoStatusTimer;
+
 function go(n) {
-        document.body.classList.toggle("demo-screen", n === 5);
+    document.body.classList.toggle("demo-screen", n === 5);
+
     for (let i = 1; i <= 5; i++) {
         document.getElementById("s" + i).classList.add("hidden");
     }
+
     document.getElementById("s" + n).classList.remove("hidden");
     document.getElementById("footer").style.display = n === 1 ? "block" : "none";
+
     if (n === 2) document.getElementById("username").focus();
-        if (demoStatusTimer) clearTimeout(demoStatusTimer);
 
-if (n === 5) {
-    const status = document.getElementById("demoStatus");
+    if (demoStatusTimer) clearTimeout(demoStatusTimer);
 
-    status.innerHTML = `
-        <div class="demo-status-icon">i</div>
-        <div>
-            <strong>Teste</strong>
-            <div style="color:#777;margin-top:4px">
-                Demonstração concluída.
-            </div>
-        </div>
-    `;
+    if (n === 5) {
+        const status = document.getElementById("demoStatus");
+        const enterButton = document.getElementById("demoEnter");
 
-    demoStatusTimer = setTimeout(() => {
-        if (document.getElementById("s5").classList.contains("hidden")) return;
+        enterButton.style.background = "#79c5f5";
 
         status.innerHTML = `
-            <div class="demo-status-icon" style="color:#16a34a;background:transparent;">✓</div>
+            <div class="demo-status-icon">i</div>
             <div>
                 <strong>Teste</strong>
                 <div style="color:#777;margin-top:4px">
-                    Demonstração feita.
+                    Demonstração concluída.
                 </div>
             </div>
         `;
 
-        document.getElementById("demoEnter").style.background = "#0095f6";
+        demoStatusTimer = setTimeout(() => {
+            if (document.getElementById("s5").classList.contains("hidden")) return;
 
-    }, 4000);
+            status.innerHTML = `
+                <div class="demo-status-icon" style="color:#16a34a;background:transparent;">✓</div>
+                <div>
+                    <strong>Teste</strong>
+                    <div style="color:#777;margin-top:4px">
+                        Demonstração feita.
+                    </div>
+                </div>
+            `;
+
+            enterButton.style.background = "#0095f6";
+
+        }, 4000);
+    }
 }
+
 // Confirma o nome digitado
 function confirmUser(event) {
     event.preventDefault();
