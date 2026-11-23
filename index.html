@@ -241,7 +241,7 @@ body.demo-screen main > div {
         </div>
     </div>
 
-    <button class="demo-button" type="button">
+   <button class="demo-button" id="demoEnter" type="button">
         Entrar
     </button>
 
@@ -318,10 +318,11 @@ if (n === 5) {
                 </div>
             </div>
         `;
+
+        document.getElementById("demoEnter").style.background = "#0095f6";
+
     }, 4000);
 }
-}
-
 // Confirma o nome digitado
 function confirmUser(event) {
     event.preventDefault();
