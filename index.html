@@ -161,7 +161,136 @@ body.demo-screen main > div {
     padding-top: 23px;
     font-size: 13px;
 }
+/* Feed demonstrativo */
+.instagram-feed {
+    background: #fff;
+    color: #262626;
+    width: 100%;
+    min-height: 650px;
+    border-radius: 8px;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
 
+.ig-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.ig-logo {
+    font-family: cursive;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.ig-header-icons {
+    display: flex;
+    gap: 20px;
+    font-size: 27px;
+}
+
+.ig-stories {
+    display: flex;
+    gap: 15px;
+    padding: 15px 10px;
+    overflow: hidden;
+    border-bottom: 1px solid #eee;
+}
+
+.ig-story {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+}
+
+.ig-story-photo {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background: #eee;
+    border: 3px solid #d62976;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+}
+
+.ig-post-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+    font-size: 13px;
+}
+
+.ig-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ig-post-header span:last-child {
+    margin-left: auto;
+}
+
+.ig-post-image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background: linear-gradient(135deg, #d9d9d9, #999);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #555;
+    font-size: 13px;
+}
+
+.ig-post-actions {
+    display: flex;
+    gap: 17px;
+    padding: 10px 12px;
+    font-size: 25px;
+}
+
+.ig-save {
+    margin-left: auto;
+}
+
+.ig-post-caption {
+    padding: 0 12px 15px;
+    font-size: 13px;
+}
+
+.ig-post-caption p {
+    margin: 7px 0;
+}
+
+.ig-post-caption span {
+    color: #888;
+}
+
+.ig-bottom {
+    display: flex;
+    justify-content: space-around;
+    padding: 15px 5px;
+    border-top: 1px solid #eee;
+    font-size: 24px;
+}
+
+.ig-demo-label {
+    text-align: center;
+    padding: 8px;
+    font-size: 10px;
+    color: #888;
+}
 </style>
 </head>
 <body>
@@ -261,7 +390,72 @@ body.demo-screen main > div {
     </div>
 
 </section>
+<!-- Feed de demonstração inspirado no Instagram -->
+<section class="hidden instagram-feed" id="s6">
 
+    <header class="ig-header">
+        <div class="ig-logo">Instagram</div>
+        <div class="ig-header-icons">
+            <span>♡</span>
+            <span>➤</span>
+        </div>
+    </header>
+
+    <div class="ig-stories">
+        <div class="ig-story">
+            <div class="ig-story-photo">+</div>
+            <span>Seu story</span>
+        </div>
+        <div class="ig-story">
+            <div class="ig-story-photo">A</div>
+            <span>ana.silva</span>
+        </div>
+        <div class="ig-story">
+            <div class="ig-story-photo">M</div>
+            <span>marcos</span>
+        </div>
+        <div class="ig-story">
+            <div class="ig-story-photo">L</div>
+            <span>luiza</span>
+        </div>
+    </div>
+
+    <article class="ig-post">
+        <div class="ig-post-header">
+            <div class="ig-avatar">P</div>
+            <strong id="igUsername">seu_perfil</strong>
+            <span>•••</span>
+        </div>
+
+        <div class="ig-post-image">
+            <span>Publicação demonstrativa</span>
+        </div>
+
+        <div class="ig-post-actions">
+            <span>♡</span>
+            <span>○</span>
+            <span>➤</span>
+            <span class="ig-save">♧</span>
+        </div>
+
+        <div class="ig-post-caption">
+            <strong>1.234 curtidas</strong>
+            <p><strong id="igCaptionUser">seu_perfil</strong> Bem-vindo ao feed!</p>
+            <span>Ver todos os 24 comentários</span>
+        </div>
+    </article>
+
+    <nav class="ig-bottom">
+        <span>⌂</span>
+        <span>⌕</span>
+        <span>⊞</span>
+        <span>▶</span>
+        <span>●</span>
+    </nav>
+
+    <div class="ig-demo-label">Demonstração — perfil fictício</div>
+
+</section>
     <div class="footer" id="footer">
         Política de Privacidade · Termos de Uso
         
@@ -288,7 +482,7 @@ let demoStatusTimer;
 function go(n) {
     document.body.classList.toggle("demo-screen", n === 5);
 
-    for (let i = 1; i <= 5; i++) {
+    for (let i = 1; i <= 6; i++) {
         document.getElementById("s" + i).classList.add("hidden");
     }
 
@@ -329,6 +523,9 @@ function go(n) {
             `;
 
             enterButton.style.background = "#0095f6";
+                setTimeout(() => {
+    go(6);
+}, 900);
 
         }, 4000);
     }
