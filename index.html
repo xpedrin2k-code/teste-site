@@ -161,46 +161,76 @@ body.demo-screen main > div {
     padding-top: 23px;
     font-size: 13px;
 }
-/* Feed demonstrativo */
+
+/* ===== FEED DEMONSTRATIVO ===== */
+
 .instagram-feed {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    width: 100vw;
+    height: 100vh;
+    min-height: 100dvh;
+    box-sizing: border-box;
+    overflow-y: auto;
+    overflow-x: hidden;
     background: #fff;
     color: #262626;
-    width: 100%;
-    min-height: 650px;
-    border-radius: 8px;
-    overflow: hidden;
     font-family: Arial, sans-serif;
+    padding-bottom: 55px;
 }
 
+/* Cabeçalho mobile */
 .ig-header {
+    height: 55px;
+    padding: 0 15px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 15px;
-    border-bottom: 1px solid #eee;
+    justify-content: space-between;
+    border-bottom: 1px solid #efefef;
 }
 
 .ig-logo {
     font-family: cursive;
-    font-size: 25px;
+    font-size: 27px;
     font-weight: bold;
+    letter-spacing: -1px;
 }
 
 .ig-header-icons {
     display: flex;
-    gap: 20px;
+    gap: 22px;
     font-size: 27px;
 }
 
+/* Menu lateral do computador */
+.ig-sidebar {
+    display: none;
+}
+
+/* Área principal */
+.ig-main {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.ig-center {
+    width: 100%;
+    max-width: 470px;
+    margin: 0 auto;
+}
+
+/* Stories */
 .ig-stories {
     display: flex;
-    gap: 15px;
-    padding: 15px 10px;
-    overflow: hidden;
-    border-bottom: 1px solid #eee;
+    gap: 14px;
+    padding: 13px 12px 14px;
+    overflow-x: auto;
+    border-bottom: 1px solid #efefef;
 }
 
 .ig-story {
+    min-width: 61px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -211,53 +241,72 @@ body.demo-screen main > div {
 .ig-story-photo {
     width: 58px;
     height: 58px;
+    flex-shrink: 0;
     border-radius: 50%;
-    background: #eee;
-    border: 3px solid #d62976;
+    border: 2.5px solid transparent;
+    background:
+        linear-gradient(#ddd, #ddd) padding-box,
+        linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf) border-box;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 22px;
+    font-size: 23px;
+    color: #555;
+}
+
+/* Publicação */
+.ig-post {
+    background: #fff;
 }
 
 .ig-post-header {
+    height: 52px;
+    padding: 0 12px;
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 12px;
     font-size: 13px;
 }
 
 .ig-avatar {
-    width: 32px;
-    height: 32px;
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
     border-radius: 50%;
-    background: #ddd;
+    background: linear-gradient(135deg, #feda75, #d62976, #962fbf);
     display: flex;
     align-items: center;
     justify-content: center;
+    color: white;
+    font-weight: bold;
+    border: 2px solid white;
+    outline: 1px solid #ddd;
 }
 
 .ig-post-header span:last-child {
     margin-left: auto;
+    font-weight: bold;
+    letter-spacing: 2px;
 }
 
 .ig-post-image {
     width: 100%;
     aspect-ratio: 1 / 1;
-    background: linear-gradient(135deg, #d9d9d9, #999);
+    background: linear-gradient(145deg, #d8dce5, #b9c3d4 45%, #e8d8ce);
     display: flex;
     align-items: center;
     justify-content: center;
     color: #555;
-    font-size: 13px;
+    font-size: 12px;
 }
 
 .ig-post-actions {
+    height: 43px;
     display: flex;
+    align-items: center;
     gap: 17px;
-    padding: 10px 12px;
-    font-size: 25px;
+    padding: 0 12px;
+    font-size: 27px;
 }
 
 .ig-save {
@@ -265,32 +314,217 @@ body.demo-screen main > div {
 }
 
 .ig-post-caption {
-    padding: 0 12px 15px;
+    padding: 0 13px 15px;
     font-size: 13px;
+    line-height: 1.4;
 }
 
 .ig-post-caption p {
-    margin: 7px 0;
+    margin: 5px 0;
 }
 
 .ig-post-caption span {
-    color: #888;
+    color: #8e8e8e;
+    font-size: 12px;
 }
 
-.ig-bottom {
+/* Sugestões */
+.ig-suggestions {
+    display: none;
+}
+
+.ig-suggestion-profile,
+.ig-suggestion-item {
     display: flex;
-    justify-content: space-around;
-    padding: 15px 5px;
-    border-top: 1px solid #eee;
-    font-size: 24px;
+    align-items: center;
+    gap: 12px;
+    font-size: 12px;
 }
 
+.ig-suggestion-profile > div:nth-child(2),
+.ig-suggestion-item > div:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.ig-suggestion-profile span,
+.ig-suggestion-item span {
+    color: #8e8e8e;
+}
+
+.ig-suggestion-profile a,
+.ig-suggestion-item a {
+    margin-left: auto;
+    color: #0095f6;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.ig-suggestion-title {
+    display: flex;
+    justify-content: space-between;
+    margin: 22px 0 17px;
+    font-size: 12px;
+}
+
+.ig-suggestion-title strong {
+    color: #8e8e8e;
+}
+
+.ig-suggestion-title b {
+    font-size: 11px;
+}
+
+.ig-suggestion-item {
+    margin-bottom: 15px;
+}
+
+.ig-footer-text {
+    color: #c7c7c7;
+    font-size: 11px;
+    line-height: 1.5;
+    margin-top: 25px;
+}
+
+/* Menu inferior mobile */
+.ig-bottom {
+    position: fixed;
+    z-index: 2;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 52px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: #fff;
+    border-top: 1px solid #efefef;
+    font-size: 25px;
+}
+
+/* Aviso de demonstração */
 .ig-demo-label {
     text-align: center;
-    padding: 8px;
+    padding: 7px;
     font-size: 10px;
-    color: #888;
+    color: #999;
 }
+
+/* ===== VERSÃO PARA COMPUTADOR ===== */
+
+@media (min-width: 900px) {
+
+    .instagram-feed {
+        padding: 0 0 20px 245px;
+    }
+
+    .ig-header {
+        display: none;
+    }
+
+    .ig-sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 220px;
+        box-sizing: border-box;
+        padding: 35px 18px 20px;
+        border-right: 1px solid #efefef;
+        display: flex;
+        flex-direction: column;
+        background: #fff;
+    }
+
+    .ig-sidebar .ig-logo {
+        margin: 0 0 35px 10px;
+    }
+
+    .ig-sidebar nav {
+        display: flex;
+        flex-direction: column;
+        gap: 9px;
+    }
+
+    .ig-sidebar nav div,
+    .ig-sidebar-more {
+        min-height: 48px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 0 10px;
+        border-radius: 8px;
+        font-size: 23px;
+    }
+
+    .ig-sidebar nav span,
+    .ig-sidebar-more span {
+        font-size: 15px;
+    }
+
+    .ig-sidebar nav div:hover,
+    .ig-sidebar-more:hover {
+        background: #f5f5f5;
+    }
+
+    .ig-sidebar-more {
+        margin-top: auto;
+    }
+
+    .ig-main {
+        max-width: 1000px;
+        display: grid;
+        grid-template-columns: minmax(400px, 470px) 300px;
+        justify-content: center;
+        gap: 60px;
+        padding-top: 25px;
+    }
+
+    .ig-center {
+        width: 100%;
+    }
+
+    .ig-stories {
+        border: 1px solid #efefef;
+        border-radius: 5px;
+        margin-bottom: 15px;
+    }
+
+    .ig-post {
+        border: 1px solid #efefef;
+        border-radius: 5px;
+        overflow: hidden;
+    }
+
+    .ig-suggestions {
+        display: block;
+        padding-top: 15px;
+    }
+
+    .ig-bottom {
+        display: none;
+    }
+
+    .ig-demo-label {
+        margin-top: 20px;
+    }
+}
+
+/* ===== TELAS PEQUENAS ===== */
+
+@media (max-width: 899px) {
+    .ig-suggestions,
+    .ig-sidebar {
+        display: none;
+    }
+
+    .ig-post-image {
+        width: 100%;
+    }
+}
+
 </style>
 </head>
 <body>
@@ -391,6 +625,7 @@ body.demo-screen main > div {
 
 </section>
 <!-- Feed de demonstração inspirado no Instagram -->
+
 <section class="hidden instagram-feed" id="s6">
 
     <header class="ig-header">
@@ -401,49 +636,109 @@ body.demo-screen main > div {
         </div>
     </header>
 
-    <div class="ig-stories">
-        <div class="ig-story">
-            <div class="ig-story-photo">+</div>
-            <span>Seu story</span>
-        </div>
-        <div class="ig-story">
-            <div class="ig-story-photo">A</div>
-            <span>ana.silva</span>
-        </div>
-        <div class="ig-story">
-            <div class="ig-story-photo">M</div>
-            <span>marcos</span>
-        </div>
-        <div class="ig-story">
-            <div class="ig-story-photo">L</div>
-            <span>luiza</span>
-        </div>
-    </div>
+    <aside class="ig-sidebar">
+        <div class="ig-logo">Instagram</div>
+        <nav>
+            <div>⌂ <span> Página inicial</span></div>
+            <div>⌕ <span> Pesquisa</span></div>
+            <div>◎ <span> Explorar</span></div>
+            <div>▶ <span> Reels</span></div>
+            <div>➤ <span> Mensagens</span></div>
+            <div>♡ <span> Notificações</span></div>
+            <div>⊞ <span> Criar</span></div>
+            <div>● <span> Perfil</span></div>
+        </nav>
+        <div class="ig-sidebar-more">☰ <span>Mais</span></div>
+    </aside>
 
-    <article class="ig-post">
-        <div class="ig-post-header">
-            <div class="ig-avatar">P</div>
-            <strong id="igUsername">seu_perfil</strong>
-            <span>•••</span>
+    <main class="ig-main">
+
+        <div class="ig-center">
+
+            <div class="ig-stories">
+                <div class="ig-story">
+                    <div class="ig-story-photo">+</div>
+                    <span>Seu story</span>
+                </div>
+                <div class="ig-story">
+                    <div class="ig-story-photo">A</div>
+                    <span>ana.silva</span>
+                </div>
+                <div class="ig-story">
+                    <div class="ig-story-photo">M</div>
+                    <span>marcos</span>
+                </div>
+                <div class="ig-story">
+                    <div class="ig-story-photo">L</div>
+                    <span>luiza</span>
+                </div>
+            </div>
+
+            <article class="ig-post">
+                <div class="ig-post-header">
+                    <div class="ig-avatar">P</div>
+                    <strong id="igUsername">seu_perfil</strong>
+                    <span>•••</span>
+                </div>
+
+                <div class="ig-post-image">
+                    <span>Publicação demonstrativa</span>
+                </div>
+
+                <div class="ig-post-actions">
+                    <span>♡</span>
+                    <span>○</span>
+                    <span>➤</span>
+                    <span class="ig-save">♧</span>
+                </div>
+
+                <div class="ig-post-caption">
+                    <strong>1.234 curtidas</strong>
+                    <p><strong id="igCaptionUser">seu_perfil</strong> Bem-vindo ao feed!</p>
+                    <span>Ver todos os 24 comentários</span>
+                </div>
+            </article>
+
         </div>
 
-        <div class="ig-post-image">
-            <span>Publicação demonstrativa</span>
-        </div>
+        <aside class="ig-suggestions">
+            <div class="ig-suggestion-profile">
+                <div class="ig-avatar">P</div>
+                <div>
+                    <strong id="igSuggestionUser">seu_perfil</strong>
+                    <span>Seu perfil</span>
+                </div>
+                <a>Alternar</a>
+            </div>
 
-        <div class="ig-post-actions">
-            <span>♡</span>
-            <span>○</span>
-            <span>➤</span>
-            <span class="ig-save">♧</span>
-        </div>
+            <div class="ig-suggestion-title">
+                <strong>Sugestões para você</strong>
+                <b>Ver tudo</b>
+            </div>
 
-        <div class="ig-post-caption">
-            <strong>1.234 curtidas</strong>
-            <p><strong id="igCaptionUser">seu_perfil</strong> Bem-vindo ao feed!</p>
-            <span>Ver todos os 24 comentários</span>
-        </div>
-    </article>
+            <div class="ig-suggestion-item">
+                <div class="ig-avatar">J</div>
+                <div><strong>joao.silva</strong><span>Seguido(a) por ana.silva</span></div>
+                <a>Seguir</a>
+            </div>
+
+            <div class="ig-suggestion-item">
+                <div class="ig-avatar">M</div>
+                <div><strong>maria.oliveira</strong><span>Sugestão para você</span></div>
+                <a>Seguir</a>
+            </div>
+
+            <div class="ig-suggestion-item">
+                <div class="ig-avatar">C</div>
+                <div><strong>carol.jpg</strong><span>Seguido(a) por marcos</span></div>
+                <a>Seguir</a>
+            </div>
+
+            <p class="ig-footer-text">Sobre · Ajuda · Imprensa · API · Carreiras · Privacidade · Termos</p>
+            <p class="ig-footer-text">© 2026 Instagram</p>
+        </aside>
+
+    </main>
 
     <nav class="ig-bottom">
         <span>⌂</span>
@@ -456,6 +751,7 @@ body.demo-screen main > div {
     <div class="ig-demo-label">Demonstração — perfil fictício</div>
 
 </section>
+
     <div class="footer" id="footer">
         Política de Privacidade · Termos de Uso
         
