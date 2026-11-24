@@ -626,129 +626,174 @@ body.demo-screen main > div {
 </section>
 <!-- Feed de demonstração inspirado no Instagram -->
 
+
 <section class="hidden instagram-feed" id="s6">
 
-    <header class="ig-header">
+    <!-- MENU LATERAL DESKTOP -->
+    <aside class="ig-sidebar">
         <div class="ig-logo">Instagram</div>
-        <div class="ig-header-icons">
-            <span>♡</span>
-            <span>➤</span>
+
+        <nav class="ig-navigation">
+            <button class="ig-nav-item active" data-page="home"><span>⌂</span> Página inicial</button>
+            <button class="ig-nav-item" data-page="search"><span>⌕</span> Pesquisa</button>
+            <button class="ig-nav-item" data-page="explore"><span>◎</span> Explorar</button>
+            <button class="ig-nav-item" data-page="reels"><span>▶</span> Reels</button>
+            <button class="ig-nav-item" data-page="messages"><span>➤</span> Mensagens</button>
+            <button class="ig-nav-item" data-page="notifications"><span>♡</span> Notificações</button>
+            <button class="ig-nav-item" data-page="create"><span>⊞</span> Criar</button>
+            <button class="ig-nav-item" data-page="profile"><span>●</span> Perfil</button>
+        </nav>
+
+        <button class="ig-nav-item ig-more"><span>☰</span> Mais</button>
+    </aside>
+
+    <!-- CABEÇALHO MOBILE -->
+    <header class="ig-mobile-header">
+        <div class="ig-logo">Instagram</div>
+        <div class="ig-mobile-actions">
+            <button aria-label="Notificações">♡</button>
+            <button aria-label="Mensagens">➤</button>
         </div>
     </header>
 
-    <aside class="ig-sidebar">
-        <div class="ig-logo">Instagram</div>
-        <nav>
-            <div>⌂ <span> Página inicial</span></div>
-            <div>⌕ <span> Pesquisa</span></div>
-            <div>◎ <span> Explorar</span></div>
-            <div>▶ <span> Reels</span></div>
-            <div>➤ <span> Mensagens</span></div>
-            <div>♡ <span> Notificações</span></div>
-            <div>⊞ <span> Criar</span></div>
-            <div>● <span> Perfil</span></div>
-        </nav>
-        <div class="ig-sidebar-more">☰ <span>Mais</span></div>
-    </aside>
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="ig-layout">
 
-    <main class="ig-main">
+        <section class="ig-feed-column" id="igHomePage">
 
-        <div class="ig-center">
-
+            <!-- STORIES -->
             <div class="ig-stories">
-                <div class="ig-story">
-                    <div class="ig-story-photo">+</div>
+                <button class="ig-story" data-story="Seu story">
+                    <div class="ig-story-ring own-story"><div>+</div></div>
                     <span>Seu story</span>
-                </div>
-                <div class="ig-story">
-                    <div class="ig-story-photo">A</div>
+                </button>
+
+                <button class="ig-story" data-story="ana.silva">
+                    <div class="ig-story-ring"><div>A</div></div>
                     <span>ana.silva</span>
-                </div>
-                <div class="ig-story">
-                    <div class="ig-story-photo">M</div>
+                </button>
+
+                <button class="ig-story" data-story="marcos">
+                    <div class="ig-story-ring"><div>M</div></div>
                     <span>marcos</span>
-                </div>
-                <div class="ig-story">
-                    <div class="ig-story-photo">L</div>
+                </button>
+
+                <button class="ig-story" data-story="luiza">
+                    <div class="ig-story-ring"><div>L</div></div>
                     <span>luiza</span>
-                </div>
+                </button>
+
+                <button class="ig-story" data-story="carol.jpg">
+                    <div class="ig-story-ring"><div>C</div></div>
+                    <span>carol.jpg</span>
+                </button>
             </div>
 
-            <article class="ig-post">
-                <div class="ig-post-header">
-                    <div class="ig-avatar">P</div>
-                    <strong id="igUsername">seu_perfil</strong>
-                    <span>•••</span>
-                </div>
+            <!-- PUBLICAÇÃO -->
+            <article class="ig-post" data-post="1">
+
+                <header class="ig-post-header">
+                    <div class="ig-post-avatar">P</div>
+                    <div class="ig-post-user">
+                        <strong id="igUsername">@seu_perfil</strong>
+                        <span>Publicação sugerida</span>
+                    </div>
+                    <button class="ig-more-button" aria-label="Mais opções">•••</button>
+                </header>
 
                 <div class="ig-post-image">
-                    <span>Publicação demonstrativa</span>
+                    <div class="ig-image-placeholder">
+                        <span>Publicação demonstrativa</span>
+                    </div>
                 </div>
 
                 <div class="ig-post-actions">
-                    <span>♡</span>
-                    <span>○</span>
-                    <span>➤</span>
-                    <span class="ig-save">♧</span>
+                    <div class="ig-action-left">
+                        <button class="ig-like" aria-label="Curtir">♡</button>
+                        <button class="ig-comment" aria-label="Comentar">♧</button>
+                        <button class="ig-share" aria-label="Compartilhar">➤</button>
+                    </div>
+                    <button class="ig-bookmark" aria-label="Salvar">♧</button>
                 </div>
 
-                <div class="ig-post-caption">
-                    <strong>1.234 curtidas</strong>
-                    <p><strong id="igCaptionUser">seu_perfil</strong> Bem-vindo ao feed!</p>
-                    <span>Ver todos os 24 comentários</span>
+                <div class="ig-post-details">
+                    <strong class="ig-likes">1.234 curtidas</strong>
+                    <p><strong id="igCaptionUser">@seu_perfil</strong> Bem-vindo ao feed!</p>
+                    <button class="ig-comments-link">Ver todos os 24 comentários</button>
+                    <span class="ig-post-date">HÁ 2 HORAS</span>
                 </div>
             </article>
 
-        </div>
+        </section>
 
-        <aside class="ig-suggestions">
-            <div class="ig-suggestion-profile">
-                <div class="ig-avatar">P</div>
-                <div>
-                    <strong id="igSuggestionUser">seu_perfil</strong>
+        <!-- PAINEL DIREITO DESKTOP -->
+        <aside class="ig-right-panel">
+
+            <div class="ig-current-profile">
+                <div class="ig-profile-photo">P</div>
+                <div class="ig-profile-info">
+                    <strong id="igSuggestionUser">@seu_perfil</strong>
                     <span>Seu perfil</span>
                 </div>
-                <a>Alternar</a>
+                <button>Alternar</button>
             </div>
 
-            <div class="ig-suggestion-title">
+            <div class="ig-suggestions-heading">
                 <strong>Sugestões para você</strong>
-                <b>Ver tudo</b>
+                <button>Ver tudo</button>
             </div>
 
-            <div class="ig-suggestion-item">
-                <div class="ig-avatar">J</div>
-                <div><strong>joao.silva</strong><span>Seguido(a) por ana.silva</span></div>
-                <a>Seguir</a>
+            <div class="ig-suggestion">
+                <div class="ig-suggestion-avatar">J</div>
+                <div class="ig-suggestion-info">
+                    <strong>joao.silva</strong>
+                    <span>Seguido(a) por ana.silva</span>
+                </div>
+                <button>Seguir</button>
             </div>
 
-            <div class="ig-suggestion-item">
-                <div class="ig-avatar">M</div>
-                <div><strong>maria.oliveira</strong><span>Sugestão para você</span></div>
-                <a>Seguir</a>
+            <div class="ig-suggestion">
+                <div class="ig-suggestion-avatar">M</div>
+                <div class="ig-suggestion-info">
+                    <strong>maria.oliveira</strong>
+                    <span>Sugestão para você</span>
+                </div>
+                <button>Seguir</button>
             </div>
 
-            <div class="ig-suggestion-item">
-                <div class="ig-avatar">C</div>
-                <div><strong>carol.jpg</strong><span>Seguido(a) por marcos</span></div>
-                <a>Seguir</a>
+            <div class="ig-suggestion">
+                <div class="ig-suggestion-avatar">C</div>
+                <div class="ig-suggestion-info">
+                    <strong>carol.jpg</strong>
+                    <span>Seguido(a) por marcos</span>
+                </div>
+                <button>Seguir</button>
             </div>
 
-            <p class="ig-footer-text">Sobre · Ajuda · Imprensa · API · Carreiras · Privacidade · Termos</p>
-            <p class="ig-footer-text">© 2026 Instagram</p>
+            <footer class="ig-footer">
+                Sobre · Ajuda · Imprensa · API · Privacidade · Termos
+                <p>© 2026 INSTAGRAM — DEMONSTRAÇÃO</p>
+            </footer>
+
         </aside>
 
     </main>
 
-    <nav class="ig-bottom">
-        <span>⌂</span>
-        <span>⌕</span>
-        <span>⊞</span>
-        <span>▶</span>
-        <span>●</span>
+    <!-- NAVEGAÇÃO MOBILE -->
+    <nav class="ig-mobile-nav">
+        <button data-page="home" aria-label="Início">⌂</button>
+        <button data-page="explore" aria-label="Pesquisa">⌕</button>
+        <button data-page="create" aria-label="Criar">⊞</button>
+        <button data-page="reels" aria-label="Reels">▶</button>
+        <button data-page="profile" aria-label="Perfil">●</button>
     </nav>
 
-    <div class="ig-demo-label">Demonstração — perfil fictício</div>
+    <div class="ig-demo-label">Ambiente demonstrativo · Perfil fictício</div>
+
+    <!-- AVISO DE DEMONSTRAÇÃO -->
+    <div class="ig-demo-notice" id="igDemoNotice" role="status">
+        Demonstração: conteúdo e interações fictícios.
+    </div>
 
 </section>
 
@@ -827,15 +872,22 @@ function go(n) {
     }
 }
 
+
 // Confirma o nome digitado
 function confirmUser(event) {
     event.preventDefault();
     const username = document.getElementById("username").value.trim().replace(/^@/, "");
     document.getElementById("demoAccount").value = username;
+
+    document.getElementById("igUsername").textContent = "@" + username;
+    document.getElementById("igCaptionUser").textContent = "@" + username;
+    document.getElementById("igSuggestionUser").textContent = "@" + username;
+
     document.getElementById("uname").textContent = "@" + username;
     document.getElementById("confirmUser").textContent = "@" + username;
     go(3);
 }
+
 
 // Animação de demonstração
 function runDemo() {
